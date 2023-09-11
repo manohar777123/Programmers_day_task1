@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock, Paper, Scissors Game</title>
+    <style>
+        *{
+            background-color:gray;
+        }
+        .choice-images {
+            display: flex;
+            justify-content: center;
+        } 
+
+        .choice-images img {
+            width: 400px;
+            height: 400px;
+            margin: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Rock, Paper, Scissor</h1>
+    <p><h2>Choose one:</h2></p>
+    <div class="choice-images">
+        <img src="images\rock.png" alt="rock" onclick="playGame('rock')">
+        <img src="images\paper.png" alt="Paper" onclick="playGame('paper')">
+        <img src="images\Scissor.png" alt="Scissor" onclick="playGame('Scissor')">
+    </div>
+    <p id="result"></p>
+    </center>
+
+    <script>
+        function playGame(playerChoice) {
+            var choices = ["rock", "paper", "Scissor"];
+            var computerChoice = choices[Math.floor(Math.random() * 3)];
+
+            var result = "";
+
+            if (playerChoice === computerChoice) {
+                result = "It's a tie!";
+            } else if (
+                (playerChoice === "rock" && computerChoice === "Scissor") ||
+                (playerChoice === "paper" && computerChoice === "rock") ||
+                (playerChoice === "Scissor" && computerChoice === "paper")
+            ) {
+                result = "You are the winner!";
+            } else {
+                result = "Computer is the winner!";
+            }
+
+            document.getElementById("result").textContent = "You chose " + playerChoice + ". Computer chose " + computerChoice + ". " + result;
+        }
+    </script>
+</body>
+</html>
